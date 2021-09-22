@@ -1,0 +1,47 @@
+const mongoose=require('mongoose');
+const ModeratorSchema=new mongoose.Schema(
+    {
+        username:{
+            type:String,
+            required:true,
+            unique:true
+        },
+        password:{
+            type:String,
+            required:true
+        },
+        serviceProvider:{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'ServiceProvider',
+            required:true
+        },
+        name:{
+            type:String,
+            required:true
+        },
+        email:{
+            type:String,
+            required:true
+        },
+        contact_no:{
+            type:String,
+            required:true
+        },
+        profile:{
+            type:String,
+            required:true,
+            default:"moderator.jpeg"
+        },
+        appointed_on:{
+            type:Date,
+            required:true,
+            default:Date.now
+        },
+        left_date:{
+            type:Date,
+            default:"2020-01-01"
+        }
+    }
+);
+const Moderator=mongoose.model('Moderator',ModeratorSchema);
+module.exports=Moderator;
